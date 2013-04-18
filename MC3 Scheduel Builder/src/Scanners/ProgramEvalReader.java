@@ -9,15 +9,12 @@ import java.util.regex.Pattern;
  * @author Matthew D'Amore
  *
  */
-//test
-//test
 public class ProgramEvalReader{
 
 	private static Scanner reader;
 	private String courseP;
 	private ArrayList<String> courseEvalLines;
 	
-    //hello
 	/**
 	 * 
 	 * @param The Course Evaluation taken from an input
@@ -95,7 +92,6 @@ public class ProgramEvalReader{
 		return courseInfo;
 		
 	}
-	
 	/**
 	 * 
 	 * @return Returns the Classes needed for the Computer Science major.
