@@ -15,14 +15,16 @@ public class InsertDialog extends Dialog {
 	protected Object result;
 	protected Shell shell;
 	private Text text;
+	private Text morph;
 
 	/**
 	 * Create the dialog.
 	 * @param parent
 	 * @param style
 	 */
-	public InsertDialog(Shell parent, int style) {
+	public InsertDialog(Shell parent, int style, Text txt) {
 		super(parent, style);
+		morph = txt;
 		setText("SWT Dialog");
 	}
 
@@ -51,12 +53,12 @@ public class InsertDialog extends Dialog {
 		shell.setSize(450, 300);
 		shell.setText(getText());
 		
-		text = new Text(shell, SWT.BORDER);
+		text = new Text(shell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
 		text.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.keyCode == 13){ 
-					text.getText();
+					morph.setText(text.getText());
 					shell.close();
 				}
 			}
@@ -66,7 +68,8 @@ public class InsertDialog extends Dialog {
 		Label lblCopyAndPaste = new Label(shell, SWT.NONE);
 		lblCopyAndPaste.setBounds(42, 5, 392, 15);
 		lblCopyAndPaste.setText("Copy and paste the text into the field and press 'Enter.'");
-
+		
+		
 	}
 
 }
