@@ -1,69 +1,39 @@
 package Classes;
 
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.TimeZone;
+public class Course{
 
-import org.eclipse.swt.widgets.DateTime;
+	private int courseNum;
+	private String courseName;
+	private int creditHours;
 
-public class Course extends Calendar  {
-
-	protected static TimeZone MC3_time = TimeZone.getTimeZone("EST");
-	protected static Locale MC3_locale = Locale.US;
-	
-	public Course() {
-		this.set(2013, 3, 9);
-		 
+	public Course(){
+		this.courseName = null;
+		this.courseNum = 0;
+		this.creditHours = 3;
 	}
 
-	@Override
-	public void add(int field, int amount) {
-		// TODO Auto-generated method stub
-		
+	public Course(String courseName, int courseNum, int creditHours){
+		this.courseName = courseName;
+		this.courseNum = courseNum;
+		this.creditHours = creditHours;
 	}
 
-	@Override
-	protected void computeFields() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void computeTime() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getGreatestMinimum(int field) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getLeastMaximum(int field) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getMaximum(int field) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getMinimum(int field) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void roll(int field, boolean up) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+    public int getCourseNum(){
+        return this.courseNum;
+    }
+	public int getCreditHours(){
+        return this.creditHours;
+    }
+    public String getCourseName(){
+        return this.courseName;
+    }
+    public void setCourseNum(int courseNum){
+        this.courseNum = courseNum;
+    }
+    public void setCourseName(String courseName){
+        this.courseName = courseName;
+    }
+    public void setCreditHours(int creditHours){
+        this.creditHours = creditHours;
+    }
 }

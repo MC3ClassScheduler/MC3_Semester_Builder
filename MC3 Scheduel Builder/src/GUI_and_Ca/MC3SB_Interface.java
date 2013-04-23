@@ -10,7 +10,6 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 
 import Scanners.ProgramEvalReader;
-import Classes.Course;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.TableColumn;
