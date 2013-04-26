@@ -5,28 +5,40 @@ import java.util.Hashtable;
 public class Course{
 
 	private int courseNum;
-	private String courseName;
 	private int creditHours;
-	private Double[] timeRange;
-	private Hashtable<Day, Double[]> courseTime;
+	private String courseName;
+	private String section;
+	private Double[] timeRange = new Double[2];
+	private Hashtable<day, Double[]> courseTime = new Hashtable<day, Double[]>();
 	
-	public enum Day{
-		SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-	    THURSDAY, FRIDAY, SATURDAY 
+	private enum day{
+		SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY 
 	}
-	
 	
 	public Course(){
 		this.courseName = null;
 		this.courseNum = 0;
 		this.creditHours = 3;
-		Day i = Day.FRIDAY;
 	}
 
-	public Course(String courseName, int courseNum, int creditHours){
+	public Course(int courseNum, int creditHours, String courseName) {
+		super();
+		this.courseNum = courseNum;
+		this.creditHours = creditHours;
+		this.courseName = courseName;
+	}
+
+
+	public Course(String courseName, String section, int courseNum, int creditHours){
 		this.courseName = courseName;
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
+	}
+	public Course(String courseName, String section, int courseNum, int creditHours, day courseDay, Double[] timeRange){
+		this.courseName = courseName;
+		this.courseNum = courseNum;
+		this.creditHours = creditHours;
+		courseTime.put(courseDay, timeRange);
 	}
 
     public int getCourseNum(){
@@ -47,4 +59,22 @@ public class Course{
     public void setCreditHours(int creditHours){
         this.creditHours = creditHours;
     }
+	public String getSection() {
+		return section;
+	}
+	public void setSection(String section) {
+		this.section = section;
+	}
+	public Double[] getTimeRange() {
+		return timeRange;
+	}
+	public void setTimeRange(Double[] timeRange) {
+		this.timeRange = timeRange;
+	}
+	public Hashtable<day, Double[]> getCourseTime() {
+		return courseTime;
+	}
+	public void setCourseTime(Hashtable<day, Double[]> courseTime) {
+		this.courseTime = courseTime;
+	}
 }
