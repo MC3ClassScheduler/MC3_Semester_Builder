@@ -51,7 +51,7 @@ public class ProgramEvalReader{
 				lines.add(reader.nextLine());
 		
 		//Removes unnecessary lines of text
-		lines.remove(" "); lines.remove(" \n");
+		lines.remove(" "); lines.remove("\n");
 		lines.remove("\t"); lines.remove("");
 		
 		return lines;
