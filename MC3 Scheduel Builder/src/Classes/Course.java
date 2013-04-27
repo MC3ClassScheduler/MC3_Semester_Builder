@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.Hashtable;
+
 /** 
  * 
  * @author damore1405
@@ -14,9 +15,9 @@ public class Course{
 	private int creditHours;
 	private String courseName;
 	private String section;
+	private enum Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
 	private Double[] timeRange = new Double[2];
 	private Hashtable<Day, Double[]> courseTime = new Hashtable<Day, Double[]>();
-	private enum Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
 	
 	public Course(){
 		this.courseName = null;

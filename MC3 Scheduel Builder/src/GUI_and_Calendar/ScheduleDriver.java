@@ -204,6 +204,7 @@ public class ScheduleDriver {
 				CalendarTab.setText("Calendar");
 				
 				Composite CalenderWindow = new Composite(WindowTab, SWT.NONE);
+				CalenderWindow.setEnabled(false);
 				CalendarTab.setControl(CalenderWindow);
 				
 				table = new Table(CalenderWindow, SWT.BORDER | SWT.FULL_SELECTION);
