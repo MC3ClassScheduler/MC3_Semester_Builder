@@ -1,7 +1,13 @@
 package Classes;
 
 import java.util.Hashtable;
-
+/** 
+ * 
+ * @author damore1405
+ *Course Object that contains Course data, such as the number of the course, as well as a Hashtable of the days of the week
+ *that the course occurs, to be used to display course information on the calendar GUI
+ *
+ */
 public class Course{
 
 	private int courseNum;
@@ -9,11 +15,8 @@ public class Course{
 	private String courseName;
 	private String section;
 	private Double[] timeRange = new Double[2];
-	private Hashtable<day, Double[]> courseTime = new Hashtable<day, Double[]>();
-	
-	private enum day{
-		SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY 
-	}
+	private Hashtable<Day, Double[]> courseTime = new Hashtable<Day, Double[]>();
+	private enum Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
 	
 	public Course(){
 		this.courseName = null;
@@ -28,13 +31,13 @@ public class Course{
 		this.courseName = courseName;
 	}
 
-
 	public Course(String courseName, String section, int courseNum, int creditHours){
 		this.courseName = courseName;
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
 	}
-	public Course(String courseName, String section, int courseNum, int creditHours, day courseDay, Double[] timeRange){
+	
+	public Course(String courseName, String section, int courseNum, int creditHours, Day courseDay, Double[] timeRange){
 		this.courseName = courseName;
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
@@ -71,10 +74,10 @@ public class Course{
 	public void setTimeRange(Double[] timeRange) {
 		this.timeRange = timeRange;
 	}
-	public Hashtable<day, Double[]> getCourseTime() {
+	public Hashtable<Day, Double[]> getCourseTime() {
 		return courseTime;
 	}
-	public void setCourseTime(Hashtable<day, Double[]> courseTime) {
+	public void setCourseTime(Hashtable<Day, Double[]> courseTime) {
 		this.courseTime = courseTime;
 	}
 }
