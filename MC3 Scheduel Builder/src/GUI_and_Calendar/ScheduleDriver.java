@@ -1,4 +1,4 @@
-package GUI_and_Ca;
+package GUI_and_Calendar;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
