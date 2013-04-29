@@ -29,6 +29,7 @@ public class ScheduleDriver {
 	private String currentCourseSelected;
 	private Table table;
 	
+	private String testjawn = "TEST COMMIT";
 	public void addCurrentCourse(List list, String course){
 		if(list.getItem(0).equals("No Courses Selected")){
 			list.remove(0);
