@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.TableItem;
 
 
 public class ScheduleDriver {
@@ -29,7 +30,6 @@ public class ScheduleDriver {
 	private String currentCourseSelected;
 	private Table table;
 	
-	private String testjawn = "TEST COMMIT";
 	public void addCurrentCourse(List list, String course){
 		if(list.getItem(0).equals("No Courses Selected")){
 			list.remove(0);
@@ -158,49 +158,51 @@ public class ScheduleDriver {
 		WindowTab.setBounds(0, 0, 565, 343);
 		
 			//TRANSCRIPT TAB
-			TabItem TranscriptTab = new TabItem(WindowTab, SWT.NONE);
-			TranscriptTab.setText("Transcript");
-		
-				Composite TranscriptWindow = new Composite(WindowTab, SWT.NONE);
-				TranscriptTab.setControl(TranscriptWindow);
-		
-					txtXscript = new Text(TranscriptWindow, SWT.BORDER | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
-					txtXscript.setEditable(false);
-					txtXscript.setText("Insert your Transcript!");
-					txtXscript.setBounds(0, 0, 557, 315);
+				TabItem TranscriptTab = new TabItem(WindowTab, SWT.NONE);
+				TranscriptTab.setText("Transcript");
+			
+					Composite TranscriptWindow = new Composite(WindowTab, SWT.NONE);
+					TranscriptTab.setControl(TranscriptWindow);
+			
+						txtXscript = new Text(TranscriptWindow, SWT.BORDER | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
+						txtXscript.setEditable(false);
+						txtXscript.setText("Insert your Transcript!");
+						txtXscript.setBounds(0, 0, 557, 315);
 		
 					
 			//COURSE PLAN TAB
-			TabItem CoursePlanTab = new TabItem(WindowTab, SWT.NONE);
-			CoursePlanTab.setText("Course Plan");
-		
-				Composite CoursePlanWindow = new Composite(WindowTab, SWT.NONE);
-				CoursePlanTab.setControl(CoursePlanWindow);
-				
-				txtCoursePlan = new Text(CoursePlanWindow, SWT.BORDER | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
-				txtCoursePlan.setText("Insert your Course Plan");
-				txtCoursePlan.setEditable(false);
-				txtCoursePlan.setBounds(0, 0, 557, 315);
+				TabItem CoursePlanTab = new TabItem(WindowTab, SWT.NONE);
+				CoursePlanTab.setText("Course Plan");
+			
+					Composite CoursePlanWindow = new Composite(WindowTab, SWT.NONE);
+					CoursePlanTab.setControl(CoursePlanWindow);
+					
+					txtCoursePlan = new Text(CoursePlanWindow, SWT.BORDER | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
+					txtCoursePlan.setText("Insert your Course Plan");
+					txtCoursePlan.setEditable(false);
+					txtCoursePlan.setBounds(0, 0, 557, 315);
 		
 				
 			//COURSE LIST TAB
-			TabItem CourseListTab = new TabItem(WindowTab, SWT.NONE);
-			CourseListTab.setText("Course List");
-		
-				Composite CourseListWindow = new Composite(WindowTab, SWT.NONE);
-				CourseListTab.setControl(CourseListWindow);
+				TabItem CourseListTab = new TabItem(WindowTab, SWT.NONE);
+				CourseListTab.setText("Course List");
+			
+					Composite CourseListWindow = new Composite(WindowTab, SWT.NONE);
+					CourseListTab.setControl(CourseListWindow);
+					
+					final List cList = new List(CourseListWindow, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+					cList.addSelectionListener(new SelectionAdapter() {
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							currentCourseSelected = cList.getSelection()[0];
+						}
+					});
+					cList.setBounds(0, 0, 557, 315);
+					cList.add("MATH TEST");
+					cList.add("SCIENCE TEST");
 				
-				final List cList = new List(CourseListWindow, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-				cList.addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						currentCourseSelected = cList.getSelection()[0];
-					}
-				});
-				cList.setBounds(0, 0, 557, 315);
-				cList.add("MATH TEST");
-				cList.add("SCIENCE TEST");
 				
+			//Calendar Tab
 				TabItem CalendarTab = new TabItem(WindowTab, SWT.NONE);
 				CalendarTab.setText("Calendar");
 				
@@ -209,37 +211,83 @@ public class ScheduleDriver {
 				CalendarTab.setControl(CalenderWindow);
 				
 				table = new Table(CalenderWindow, SWT.BORDER | SWT.FULL_SELECTION);
+				table.setLinesVisible(true);
 				table.setBounds(0, 0, 557, 315);
 				table.setHeaderVisible(true);
-				table.setLinesVisible(true);
 				
-				TableColumn SunColumn = new TableColumn(table, SWT.NONE);
-				SunColumn.setWidth(79);
-				SunColumn.setText("Sunday");
+						TableColumn tblclmnTime = new TableColumn(table, SWT.NONE);
+						tblclmnTime.setWidth(45);
+						tblclmnTime.setText("Time");
+						
+						TableColumn SunColumn = new TableColumn(table, SWT.NONE);
+						SunColumn.setWidth(73);
+						SunColumn.setText("Sunday");
+						
+						TableColumn MonColumn = new TableColumn(table, SWT.NONE);
+						MonColumn.setWidth(73);
+						MonColumn.setText("Monday");
+						
+						TableColumn TueColumn = new TableColumn(table, SWT.NONE);
+						TueColumn.setWidth(73);
+						TueColumn.setText("Tuesday");
+						
+						TableColumn WedsColumn = new TableColumn(table, SWT.NONE);
+						WedsColumn.setWidth(73);
+						WedsColumn.setText("Wednesday");
+						
+						TableColumn ThuColumn = new TableColumn(table, SWT.NONE);
+						ThuColumn.setWidth(73);
+						ThuColumn.setText("Thursday");
+						
+						TableColumn FriColumn = new TableColumn(table, SWT.NONE);
+						FriColumn.setWidth(72);
+						FriColumn.setText("Friday");
+						
+						TableColumn SatColumn = new TableColumn(table, SWT.NONE);
+						SatColumn.setWidth(71);
+						SatColumn.setText("Saturday");
 				
-				TableColumn MonColumn = new TableColumn(table, SWT.NONE);
-				MonColumn.setWidth(79);
-				MonColumn.setText("Monday");
-				
-				TableColumn TueColumn = new TableColumn(table, SWT.NONE);
-				TueColumn.setWidth(79);
-				TueColumn.setText("Tuesday");
-				
-				TableColumn WedsColumn = new TableColumn(table, SWT.NONE);
-				WedsColumn.setWidth(79);
-				WedsColumn.setText("Wednesday");
-				
-				TableColumn ThuColumn = new TableColumn(table, SWT.NONE);
-				ThuColumn.setWidth(79);
-				ThuColumn.setText("Thursday");
-				
-				TableColumn FriColumn = new TableColumn(table, SWT.NONE);
-				FriColumn.setWidth(79);
-				FriColumn.setText("Friday");
-				
-				TableColumn SatColumn = new TableColumn(table, SWT.NONE);
-				SatColumn.setWidth(79);
-				SatColumn.setText("Saturday");
+									TableItem nineAM = new TableItem(table, SWT.NONE);
+									nineAM.setText("9AM");
+									
+									TableItem tenAM = new TableItem(table, 0);
+									tenAM.setText("10AM");
+									
+									TableItem elevenAM = new TableItem(table, 0);
+									elevenAM.setText("11AM");
+									
+									TableItem twelvePM = new TableItem(table, 0);
+									twelvePM.setText("12PM");
+									
+									TableItem onePM = new TableItem(table, 0);
+									onePM.setText("1PM");
+									
+									TableItem twoPM = new TableItem(table, 0);
+									twoPM.setText("2PM");
+									
+									TableItem threePM = new TableItem(table, 0);
+									threePM.setText("3PM");
+									
+									TableItem fourPM = new TableItem(table, 0);
+									fourPM.setText("4PM");
+									
+									TableItem fivePM = new TableItem(table, 0);
+									fivePM.setText("5PM");
+									
+									TableItem sixPM = new TableItem(table, 0);
+									sixPM.setText("6PM");
+									
+									TableItem sevenPM = new TableItem(table, 0);
+									sevenPM.setText("7PM");
+									
+									TableItem eightPM = new TableItem(table, 0);
+									eightPM.setText("8PM");
+									
+									TableItem ninePM = new TableItem(table, 0);
+									ninePM.setText("9PM");
+									
+									TableItem tenPM = new TableItem(table, 0);
+									tenPM.setText("10PM");
 		
 				
 			
