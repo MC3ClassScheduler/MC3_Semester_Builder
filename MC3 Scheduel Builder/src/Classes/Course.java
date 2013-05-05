@@ -3,11 +3,9 @@ package Classes;
 import java.util.Hashtable;
 
 /** 
- * 
  * @author damore1405
  *Course Object that contains Course data, such as the number of the course, as well as a Hashtable of the days of the week
  *that the course occurs, to be used to display course information on the calendar GUI
- *
  */
 public class Course{
 
@@ -26,7 +24,6 @@ public class Course{
 	}
 
 	public Course(int courseNum, int creditHours, String courseName) {
-		super();
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
 		this.courseName = courseName;

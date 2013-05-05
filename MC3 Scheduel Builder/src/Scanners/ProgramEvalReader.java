@@ -67,12 +67,12 @@ public class ProgramEvalReader{
 	public ArrayList<String> getGpaInfo(){
 		ArrayList<String> GpaInfo = new ArrayList<String>();
 		
-		for(String i: this.courseEvalLines){
+		for(String i: courseEvalLines){
 			if(i.contains("Institutional GPA:")) GpaInfo.add(i);
 			if(i.contains("Overall GPA:")) GpaInfo.add(i);
 		}
 		
-		return this.courseEvalLines;
+		return courseEvalLines;
 	}
 	
 	/**
