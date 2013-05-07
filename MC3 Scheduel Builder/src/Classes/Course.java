@@ -96,6 +96,7 @@ public class Course{
 		while(in.hasNextLine()){courseLines.add(in.nextLine());}
 		
 		for(String i: courseLines){
+			in = new Scanner(i);
 			in.useDelimiter(",");
 			
 			Courses[count].courseCode   = in.next();
@@ -115,11 +116,7 @@ public class Course{
 
 	@Override
 	public String toString() {
-		return "Course [courseNum=" + courseNum + ", creditHours="
-				+ creditHours + ", roomNum=" + roomNum + ", courseCode="
-				+ courseCode + ", courseName=" + courseName + ", section="
-				+ section + ", building=" + building + ", days=" + days
-				+ ", timeRange=" + Arrays.toString(timeRange) + ", courseTime="
-				+ courseTime + "]";
+		return courseCode + "*" + courseNum + "*" + section + " " + courseName + " " + building +
+				" " + roomNum + " " + days + " " + timeRange.toString();
 	}
 }
