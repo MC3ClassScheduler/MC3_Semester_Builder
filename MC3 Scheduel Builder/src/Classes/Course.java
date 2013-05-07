@@ -128,6 +128,7 @@ public class Course{
 		return courseCode + "*" + courseNum + "*" + section + " " + courseName + " " + building +
 				" " + roomNum + " " + days + " " + timeRange[0] + " " + timeRange[1];
 	}
+	
 	public boolean conflict(Course c){
 		if(this.days.contains("M") && c.days.contains("M")){
 			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
