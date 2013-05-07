@@ -39,6 +39,7 @@ public class ScheduleDriver {
 	private String currentCourseSelected;
 	private Table table;
 	private Course[] courseList;
+	private ArrayList<Course> currentlySelectedCourse = new ArrayList<Course>();
 	
 	public void addCurrentCourse(List list, String course){
 		if(list.getItem(0).equals("No Courses Selected")){
@@ -154,8 +155,72 @@ public class ScheduleDriver {
 	}
 	
 	
-	public void removeFromCalendar(){
+	public void removeFromCalendar(double startTime, Table tab, String days){
+		startTime = Math.round(startTime);
+		String[] input = new String[8];
 		
+		//populates input with current info
+		for(int i = 0; i < 8; i++){
+			input[i] = tab.getItem((int)startTime-8).getText(i);
+		}
+			
+		ArrayList<Integer> inDays = new ArrayList<Integer>();
+		//checking the days of the course	
+			for(int i = 0; i < days.length(); i++){
+				switch(days.charAt(i)){
+					case 'N': 	inDays.add(1);
+								break;
+					case 'M': 	inDays.add(2);
+								break;
+					case 'T': 	inDays.add(3);
+								break;
+					case 'W': 	inDays.add(4);
+								break;
+					case 'R': 	inDays.add(5);
+								break;
+					case 'F': 	inDays.add(6);
+								break;
+					case 'S': 	inDays.add(7);
+								break;
+				}
+			}
+		for(int num: inDays){
+			input[num] = "";
+		}
+		
+		//setting the time slot with the correct courses
+		switch(((int)startTime)){
+			case 8: 	tab.getItem(0).setText(input);
+						break;
+			case 9: 	tab.getItem(1).setText(input);
+						break;
+			case 10:	tab.getItem(2).setText(input);
+						break;
+			case 11:	tab.getItem(3).setText(input);
+						break;
+			case 12:	tab.getItem(4).setText(input);
+						break;
+			case 13:	tab.getItem(5).setText(input);
+						break;
+			case 14:	tab.getItem(6).setText(input);
+						break;
+			case 15:	tab.getItem(7).setText(input);
+						break;
+			case 16:	tab.getItem(8).setText(input);
+						break;
+			case 17:	tab.getItem(9).setText(input);
+						break;
+			case 18:	tab.getItem(10).setText(input);
+						break;
+			case 19:	tab.getItem(11).setText(input);
+						break;
+			case 20:	tab.getItem(12).setText(input);
+						break;
+			case 21:	tab.getItem(13).setText(input);
+						break;
+			case 22:	tab.getItem(14).setText(input);
+						break;
+		}
 	}
 	/**
 	 * Create contents of the window.
@@ -386,8 +451,13 @@ public class ScheduleDriver {
 			@Override
 			public void mouseUp(MouseEvent e) {
 				try{
+					Course currentCrs = new Course();
+					for(Course crs: courseList){
+						if(selectedList.getSelection()[0].equals(crs.toString()))
+							currentCrs = crs;
+					}
 					removeCurrentCourse(selectedList, selectedList.getSelection()[0]);
-					//removeFromCalendar
+					removeFromCalendar(currentCrs.getTimeRange()[0], table, currentCrs.getDays());
 				}
 				catch(ArrayIndexOutOfBoundsException error){
 					final ErrorDialog err = new ErrorDialog(shlMcScheduler, 1);
@@ -405,12 +475,30 @@ public class ScheduleDriver {
 			public void mouseUp(MouseEvent e) {
 				try{
 					Course currentCrs = new Course();
-					addCurrentCourse(selectedList, cList.getSelection()[0]);
+					int count = 0;
 					for(Course crs: courseList){
 						if(cList.getSelection()[0].equals(crs.toString()))
 							currentCrs = crs;
 					}
-					addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
+					if(currentlySelectedCourse.isEmpty()){
+						addCurrentCourse(selectedList, cList.getSelection()[0]);
+						addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
+					}
+					else{
+						for(Course cr: currentlySelectedCourse){
+							//if(currentCrs.conflict(cr)){
+							//	count++;
+							//}
+						}
+						if(count==0){
+							addCurrentCourse(selectedList, cList.getSelection()[0]);
+							addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
+						}
+						else{
+							final ConflictDialog con = new ConflictDialog(shlMcScheduler, 1, count);
+							con.open();
+						}
+					}
 				}
 				catch(ArrayIndexOutOfBoundsException error){
 					final ErrorDialog err = new ErrorDialog(shlMcScheduler, 1);
