@@ -81,13 +81,53 @@ public class ScheduleDriver {
 	public void addToCalendar(String courseName, double startTime, Table tab, String days){
 		startTime = Math.round(startTime);
 		String[] input = new String[8];
+		System.out.print(tab.getItem(0).getText(0)+ "a sdasd");
+		
+		
+		
+		//retrieves the String[] data to manipulate
+		switch(((int)startTime)){
+			case 8: 	input = (String[])tab.getItem(0).getData();
+						break;
+			case 9: 	input = (String[])tab.getItem(1).getData();
+						break;
+			case 10:	input = (String[])tab.getItem(2).getData();
+						break;
+			case 11:	input = (String[])tab.getItem(3).getData();
+						break;
+			case 12:	input = (String[])tab.getItem(4).getData();
+						break;
+			case 13:	input = (String[])tab.getItem(5).getData();
+						break;
+			case 14:	input = (String[])tab.getItem(6).getData();
+						break;
+			case 15:	input = (String[])tab.getItem(7).getData();
+						break;
+			case 16:	input = (String[])tab.getItem(8).getData();
+						break;
+			case 17:	input = (String[])tab.getItem(9).getData();
+						break;
+			case 18:	input = (String[])tab.getItem(10).getData();
+						break;
+			case 19:	input = (String[])tab.getItem(11).getData();
+						break;
+			case 20:	input = (String[])tab.getItem(12).getData();
+						break;
+			case 21:	input = (String[])tab.getItem(13).getData();
+						break;
+			case 22:	input = (String[])tab.getItem(14).getData();
+						break;
+	}
+		
+		
+		
 		ArrayList<Integer> inDays = new ArrayList<Integer>();
 		String TOD = "AM";
 		
 		//checking start time if before 12
-			if(startTime >= 12.0)
-				TOD = "PM";
-			input[0] = ((Double)startTime).toString().substring(0, 1) + " " + TOD;
+		//	if(startTime >= 12.0)
+		//		TOD = "PM";
+		//	input[0] = ((Double)startTime).toString().substring(0, 1) + " " + TOD;
 			
 		//checking the days of the course	
 			for(int i = 0; i < days.length(); i++){
@@ -112,6 +152,7 @@ public class ScheduleDriver {
 			input[num] = courseName;
 		}
 		
+		//setting the time slot with the correct courses
 		switch(((int)startTime)){
 			case 8: 	tab.getItem(0).setText(input);
 						break;
@@ -184,13 +225,6 @@ public class ScheduleDriver {
 							}
 						});	
 						mntmExit.setText("Exit");
-				
-				//EDIT
-				MenuItem EditMenu = new MenuItem(MenuBar, SWT.CASCADE);
-				EditMenu.setText("Edit");
-		
-					Menu EditCascade = new Menu(EditMenu);
-					EditMenu.setMenu(EditCascade);
 		
 					
 				//INSERT
@@ -220,14 +254,6 @@ public class ScheduleDriver {
 							}
 							});
 					InsertCoursePlan.setText("Insert Course Plan");
-		
-					MenuItem InsertCourseList = new MenuItem(InsertCascade, SWT.NONE);
-					InsertCourseList.addSelectionListener(new SelectionAdapter() {
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-						}
-					});
-					InsertCourseList.setText("Insert a Course List");
 		
 		//WINDOW TABS
 		TabFolder WindowTab = new TabFolder(shlMcScheduler, SWT.NONE);
@@ -327,49 +353,49 @@ public class ScheduleDriver {
 						SatColumn.setText("Saturday");
 		
 									TableItem eightAM = new TableItem(table, 0);
-									eightAM.setText("8 AM");
+									eightAM.setText(new String[]{"8 AM", "", "", "", "", "", "", ""});
 				
 									TableItem nineAM = new TableItem(table, 0);
-									nineAM.setText("9 AM");
+									nineAM.setText(new String[]{"9 AM", "", "", "", "", "", "", ""});
 									
 									TableItem tenAM = new TableItem(table, 0);
-									tenAM.setText("10 AM");
+									tenAM.setText(new String[]{"10 AM", "", "", "", "", "", "", ""});
 									
 									TableItem elevenAM = new TableItem(table, 0);
-									elevenAM.setText("11 AM");
+									elevenAM.setText(new String[]{"11 AM", "", "", "", "", "", "", ""});
 									
 									TableItem twelvePM = new TableItem(table, 0);
-									twelvePM.setText("12 PM");
+									twelvePM.setText(new String[]{"12 PM", "", "", "", "", "", "", ""});
 									
 									TableItem onePM = new TableItem(table, 0);
-									onePM.setText("1 PM");
+									onePM.setText(new String[]{"1 PM", "", "", "", "", "", "", ""});
 									
 									TableItem twoPM = new TableItem(table, 0);
-									twoPM.setText("2 PM");
+									twoPM.setText(new String[]{"2 PM", "", "", "", "", "", "", ""});
 									
 									TableItem threePM = new TableItem(table, 0);
-									threePM.setText("3 PM");
+									threePM.setText(new String[]{"3 PM", "", "", "", "", "", "", ""});
 									
 									TableItem fourPM = new TableItem(table, 0);
-									fourPM.setText("4 PM");
+									fourPM.setText(new String[]{"4 PM", "", "", "", "", "", "", ""});
 									
 									TableItem fivePM = new TableItem(table, 0);
-									fivePM.setText("5 PM");
+									fivePM.setText(new String[]{"5 PM", "", "", "", "", "", "", ""});
 									
 									TableItem sixPM = new TableItem(table, 0);
-									sixPM.setText("6 PM");
+									sixPM.setText(new String[]{"6 PM", "", "", "", "", "", "", ""});
 									
 									TableItem sevenPM = new TableItem(table, 0);
-									sevenPM.setText("7 PM");
+									sevenPM.setText(new String[]{"7 PM", "", "", "", "", "", "", ""});
 									
 									TableItem eightPM = new TableItem(table, 0);
-									eightPM.setText("8 PM");
+									eightPM.setText(new String[]{"8 PM", "", "", "", "", "", "", ""});
 									
 									TableItem ninePM = new TableItem(table, 0);
-									ninePM.setText("9PM");
+									ninePM.setText(new String[]{"9 PM", "", "", "", "", "", "", ""});
 									
 									TableItem tenPM = new TableItem(table, 0);
-									tenPM.setText("10PM");
+									tenPM.setText(new String[]{"10 PM", "", "", "", "", "", "", ""});
 		
 				
 			
