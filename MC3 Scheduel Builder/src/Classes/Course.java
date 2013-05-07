@@ -153,7 +153,7 @@ public class Course{
 	@Override
 	public String toString() {
 		return courseCode + "*" + courseNum + "*" + section + " " + courseName + " " + building +
-				" " + roomNum + " " + days + " " + timeRange.toString();
+				" " + roomNum + " " + days + " " + timeRange[0] + " " + timeRange[1];
 	}
 
 

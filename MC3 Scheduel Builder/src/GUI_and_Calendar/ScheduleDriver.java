@@ -98,19 +98,19 @@ public class ScheduleDriver {
 		//checking the days of the course	
 			for(int i = 0; i < days.length(); i++){
 				switch(days.charAt(i)){
-					case 'n': 	inDays.add(1);
+					case 'N': 	inDays.add(1);
 								break;
-					case 'm': 	inDays.add(2);
+					case 'M': 	inDays.add(2);
 								break;
-					case 't': 	inDays.add(3);
+					case 'T': 	inDays.add(3);
 								break;
-					case 'w': 	inDays.add(4);
+					case 'W': 	inDays.add(4);
 								break;
-					case 'r': 	inDays.add(5);
+					case 'R': 	inDays.add(5);
 								break;
-					case 'f': 	inDays.add(6);
+					case 'F': 	inDays.add(6);
 								break;
-					case 's': 	inDays.add(7);
+					case 'S': 	inDays.add(7);
 								break;
 				}
 			}
@@ -377,7 +377,7 @@ public class ScheduleDriver {
 		Composite SelectedCoursesWindow = new Composite(shlMcScheduler, SWT.NONE);
 		SelectedCoursesWindow.setBounds(571, 23, 206, 310);
 		
-		final List selectedList = new List(SelectedCoursesWindow, SWT.BORDER);
+		final List selectedList = new List(SelectedCoursesWindow, SWT.BORDER | SWT.H_SCROLL);
 		selectedList.setBounds(0, 0, 206, 269);
 		selectedList.add("No Courses Selected");
 		
@@ -404,8 +404,13 @@ public class ScheduleDriver {
 			@Override
 			public void mouseUp(MouseEvent e) {
 				try{
+					Course currentCrs = new Course();
 					addCurrentCourse(selectedList, cList.getSelection()[0]);
-					addToCalendar(cList.getSelection()[0], 8.5, table, "mwf");
+					for(Course crs: courseList){
+						if(cList.getSelection()[0].equals(crs.toString()))
+							currentCrs = crs;
+					}
+					addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
 				}
 				catch(ArrayIndexOutOfBoundsException error){
 					final ErrorDialog err = new ErrorDialog(shlMcScheduler, 1);
