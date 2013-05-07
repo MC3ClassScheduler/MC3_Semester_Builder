@@ -43,7 +43,7 @@ public class ProgramEvalReader{
 	 * @param transcript
 	 * @return Returns the Program Evaluations Slit into separate lines
 	 */
-	protected  ArrayList<String> getLines(String transcript){
+	protected ArrayList<String> getLines(String transcript){
 		ArrayList<String>  lines = new ArrayList<String>();
 		reader = new Scanner(transcript);
 		

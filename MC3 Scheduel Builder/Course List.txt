@@ -1,0 +1,8 @@
+CIS,126,T6C,Assemblar,ATC,224,MWF,18.00,21.50
+ENG,102,AC,English Comp 2,PARK,134,MF,17.00,18.30
+ENG,102,DC,English Comp 2,PARK,331,TR,10.00,12.30
+SPC,110,DC2,Intro to Speech Communication, PARK, 326, MWF, 12.15,13.45
+CIS,112,NC,Comp Sci III: Data Struc-Algo,PARK,309,10.10,12.05
+MAT,190
+
+

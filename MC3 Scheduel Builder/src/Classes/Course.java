@@ -1,7 +1,12 @@
 package Classes;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
-
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import Scanners.ProgramEvalReader;
 /** 
  * @author damore1405
  *Course Object that contains Course data, such as the number of the course, as well as a Hashtable of the days of the week
@@ -11,16 +16,34 @@ public class Course{
 
 	private int courseNum;
 	private int creditHours;
+	private int roomNum;
+	private String courseCode;
 	private String courseName;
 	private String section;
+	private String building;
+	private String days;
 	private enum Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
 	private Double[] timeRange = new Double[2];
 	private Hashtable<Day, Double[]> courseTime = new Hashtable<Day, Double[]>();
 	
-	public Course(){
-		this.courseName = null;
-		this.courseNum = 0;
-		this.creditHours = 3;
+	public Course() throws FileNotFoundException{
+		Scanner in = new Scanner(new FileReader("Course List.txt"));
+		ArrayList<String> courses = new ArrayList<String>();
+		while(in.hasNextLine()){courses.add(in.nextLine());}
+		
+		for(String i: courses){
+			in.useDelimiter(",");
+			courseCode = in.next();
+			courseNum = in.nextInt();
+			section = in.next();
+			courseName = in.next();
+			building = in.next();
+			roomNum = in.nextInt();
+			days = in.next();
+			timeRange[0] = in.nextDouble();
+			timeRange[1] = in.nextDouble();
+		}
+
 	}
 
 	public Course(int courseNum, int creditHours, String courseName) {
@@ -78,4 +101,5 @@ public class Course{
 	public void setCourseTime(Hashtable<Day, Double[]> courseTime) {
 		this.courseTime = courseTime;
 	}
+
 }
