@@ -165,7 +165,7 @@ public class ScheduleDriver {
 		shlMcScheduler = new Shell();
 		shlMcScheduler.setSize(803, 401);
 		shlMcScheduler.setText("MC3 Scheduler");
-		courseList = new Course().getCoursesFromFile();
+		courseList = getCoursesFromFile();
 		
 		//MENU BAR
 		Menu MenuBar = new Menu(shlMcScheduler, SWT.BAR);
@@ -422,19 +422,20 @@ public class ScheduleDriver {
 		int count = 0;
 		Course[] Courses = new Course[6];
 		while(in.hasNextLine()){courseLines.add(in.nextLine());}
-		
+		in.close();
 		for(String i: courseLines){
 			in = new Scanner(i);
 			in.useDelimiter(",");
-			
-			Courses[count].setCourseCode(in.next());
-			Courses[count].setCourseNum(in.nextInt());
-			Courses[count].setSection(in.next());
-			Courses[count].setCourseName(in.next());
-			Courses[count].setBuilding(in.next());
-			Courses[count].setRoomNum(in.nextInt());
-			Courses[count].setDays(in.next());
-			Courses[count].setTimeRange(in.nextDouble(),in.nextDouble());
+			Course crs = new Course();
+			crs.setCourseCode(in.next());
+			crs.setCourseNum(in.nextInt());
+			crs.setSection(in.next());
+			crs.setCourseName(in.next());
+			crs.setBuilding(in.next());
+			crs.setRoomNum(in.nextInt());
+			crs.setDays(in.next());
+			crs.setTimeRange(in.nextDouble(),in.nextDouble());
+			Courses[count] = crs;
 			count++;
 		}
 		return Courses;
