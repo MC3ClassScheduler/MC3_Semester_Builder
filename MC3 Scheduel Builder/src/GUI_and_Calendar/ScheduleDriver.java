@@ -81,54 +81,13 @@ public class ScheduleDriver {
 	public void addToCalendar(String courseName, double startTime, Table tab, String days){
 		startTime = Math.round(startTime);
 		String[] input = new String[8];
-		System.out.print(tab.getItem(0).getText(0)+ "a sdasd");
 		
-		
-		
-		//retrieves the String[] data to manipulate
-		switch(((int)startTime)){
-			case 8: 	input = (String[])tab.getItem(0).getData();
-						break;
-			case 9: 	input = (String[])tab.getItem(1).getData();
-						break;
-			case 10:	input = (String[])tab.getItem(2).getData();
-						break;
-			case 11:	input = (String[])tab.getItem(3).getData();
-						break;
-			case 12:	input = (String[])tab.getItem(4).getData();
-						break;
-			case 13:	input = (String[])tab.getItem(5).getData();
-						break;
-			case 14:	input = (String[])tab.getItem(6).getData();
-						break;
-			case 15:	input = (String[])tab.getItem(7).getData();
-						break;
-			case 16:	input = (String[])tab.getItem(8).getData();
-						break;
-			case 17:	input = (String[])tab.getItem(9).getData();
-						break;
-			case 18:	input = (String[])tab.getItem(10).getData();
-						break;
-			case 19:	input = (String[])tab.getItem(11).getData();
-						break;
-			case 20:	input = (String[])tab.getItem(12).getData();
-						break;
-			case 21:	input = (String[])tab.getItem(13).getData();
-						break;
-			case 22:	input = (String[])tab.getItem(14).getData();
-						break;
-	}
-		
-		
-		
-		ArrayList<Integer> inDays = new ArrayList<Integer>();
-		String TOD = "AM";
-		
-		//checking start time if before 12
-		//	if(startTime >= 12.0)
-		//		TOD = "PM";
-		//	input[0] = ((Double)startTime).toString().substring(0, 1) + " " + TOD;
+		//populates input with current info
+		for(int i = 0; i < 8; i++){
+			input[i] = tab.getItem((int)startTime-8).getText(i);
+		}
 			
+		ArrayList<Integer> inDays = new ArrayList<Integer>();
 		//checking the days of the course	
 			for(int i = 0; i < days.length(); i++){
 				switch(days.charAt(i)){
