@@ -1,5 +1,6 @@
 package GUI_and_Calendar;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.eclipse.swt.widgets.Display;
@@ -25,6 +26,8 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 
+import Classes.Course;
+
 
 public class ScheduleDriver {
 
@@ -33,6 +36,7 @@ public class ScheduleDriver {
 	private Text txtCoursePlan;
 	private String currentCourseSelected;
 	private Table table;
+	private Course[] courseList;
 	
 	public void addCurrentCourse(List list, String course){
 		if(list.getItem(0).equals("No Courses Selected")){
@@ -65,8 +69,9 @@ public class ScheduleDriver {
 
 	/**
 	 * Open the window.
+	 * @throws FileNotFoundException 
 	 */
-	public void open() {
+	public void open() throws FileNotFoundException {
 		Display display = Display.getDefault();
 		createContents();
 		shlMcScheduler.open();
@@ -152,12 +157,13 @@ public class ScheduleDriver {
 	}
 	/**
 	 * Create contents of the window.
+	 * @throws FileNotFoundException 
 	 */
-	protected void createContents() {
+	protected void createContents() throws FileNotFoundException {
 		shlMcScheduler = new Shell();
 		shlMcScheduler.setSize(803, 401);
 		shlMcScheduler.setText("MC3 Scheduler");
-		
+		courseList = new Course().getCoursesFromFile();
 		
 		//MENU BAR
 		Menu MenuBar = new Menu(shlMcScheduler, SWT.BAR);
@@ -262,8 +268,9 @@ public class ScheduleDriver {
 						}
 					});
 					cList.setBounds(0, 0, 557, 315);
-					cList.add("MATH TEST");
-					cList.add("SCIENCE TEST");
+					for(Course cls: courseList){
+						cList.add(cls.toString());
+					}
 				
 				
 			//Calendar Tab
