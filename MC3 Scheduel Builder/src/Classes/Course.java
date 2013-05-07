@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.File;
@@ -25,31 +26,15 @@ public class Course{
 	private enum Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
 	private Double[] timeRange = new Double[2];
 	private Hashtable<Day, Double[]> courseTime = new Hashtable<Day, Double[]>();
-	
-	public Course() throws FileNotFoundException{
-		Scanner in = new Scanner(new FileReader("Course List.txt"));
-		ArrayList<String> courses = new ArrayList<String>();
-		while(in.hasNextLine()){courses.add(in.nextLine());}
-		
-		for(String i: courses){
-			in.useDelimiter(",");
-			courseCode = in.next();
-			courseNum = in.nextInt();
-			section = in.next();
-			courseName = in.next();
-			building = in.next();
-			roomNum = in.nextInt();
-			days = in.next();
-			timeRange[0] = in.nextDouble();
-			timeRange[1] = in.nextDouble();
-		}
 
-	}
 
 	public Course(int courseNum, int creditHours, String courseName) {
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
 		this.courseName = courseName;
+	}
+
+	public Course() {
 	}
 
 	public Course(String courseName, String section, int courseNum, int creditHours){
@@ -102,4 +87,39 @@ public class Course{
 		this.courseTime = courseTime;
 	}
 
+
+	public Course[] getCoursesFromFile() throws FileNotFoundException{
+		Scanner in = new Scanner(new FileReader("Course List.txt"));
+		ArrayList<String> courseLines = new ArrayList<String>();
+		int count = 0;
+		Course[] Courses = new Course[6];
+		while(in.hasNextLine()){courseLines.add(in.nextLine());}
+		
+		for(String i: courseLines){
+			in.useDelimiter(",");
+			
+			Courses[count].courseCode   = in.next();
+			Courses[count].courseNum    = in.nextInt();
+			Courses[count].section      = in.next();
+			Courses[count].courseName   = in.next();
+			Courses[count].building     = in.next();
+			Courses[count].roomNum      = in.nextInt();
+			Courses[count].days         = in.next();
+			Courses[count].timeRange[0] = in.nextDouble();
+			Courses[count].timeRange[1] = in.nextDouble();
+			count++;
+		}
+		return Courses;
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Course [courseNum=" + courseNum + ", creditHours="
+				+ creditHours + ", roomNum=" + roomNum + ", courseCode="
+				+ courseCode + ", courseName=" + courseName + ", section="
+				+ section + ", building=" + building + ", days=" + days
+				+ ", timeRange=" + Arrays.toString(timeRange) + ", courseTime="
+				+ courseTime + "]";
+	}
 }
