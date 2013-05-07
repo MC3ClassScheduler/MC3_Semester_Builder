@@ -123,38 +123,13 @@ public class Course{
 		this.courseTime = courseTime;
 	}
 
-/*
-	public Course[] getCoursesFromFile() throws FileNotFoundException{
-		Scanner in = new Scanner(new FileReader("Course List.txt"));
-		ArrayList<String> courseLines = new ArrayList<String>();
-		int count = 0;
-		Course[] Courses = new Course[6];
-		while(in.hasNextLine()){courseLines.add(in.nextLine());}
-		
-		for(String i: courseLines){
-			in = new Scanner(i);
-			in.useDelimiter(",");
-			
-			Courses[count].courseCode   = in.next();
-			Courses[count].courseNum    = in.nextInt();
-			Courses[count].section      = in.next();
-			Courses[count].courseName   = in.next();
-			Courses[count].building     = in.next();
-			Courses[count].roomNum      = in.nextInt();
-			Courses[count].days         = in.next();
-			Courses[count].timeRange[0] = in.nextDouble();
-			Courses[count].timeRange[1] = in.nextDouble();
-			count++;
-		}
-		return Courses;
-		
-	}
-*/
 	@Override
 	public String toString() {
 		return courseCode + "*" + courseNum + "*" + section + " " + courseName + " " + building +
 				" " + roomNum + " " + days + " " + timeRange[0] + " " + timeRange[1];
 	}
-
+	public boolean checkConfliction(Course c){
+		
+	}
 
 }
