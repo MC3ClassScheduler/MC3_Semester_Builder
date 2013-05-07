@@ -41,7 +41,7 @@ public class ScheduleDriver {
 	private Course[] courseList;
 	private ArrayList<Course> currentlySelectedCourse = new ArrayList<Course>();
 	
-	public void addCurrentCourse(List list, String course){
+	public void addCurrentCourse(List list, String course){ 
 		if(list.getItem(0).equals("No Courses Selected")){
 			list.remove(0);
 			list.add(course);
@@ -457,6 +457,7 @@ public class ScheduleDriver {
 							currentCrs = crs;
 					}
 					removeCurrentCourse(selectedList, selectedList.getSelection()[0]);
+					currentlySelectedCourse.remove(currentCrs);
 					removeFromCalendar(currentCrs.getTimeRange()[0], table, currentCrs.getDays());
 				}
 				catch(ArrayIndexOutOfBoundsException error){
@@ -482,13 +483,14 @@ public class ScheduleDriver {
 					}
 					if(currentlySelectedCourse.isEmpty()){
 						addCurrentCourse(selectedList, cList.getSelection()[0]);
+						currentlySelectedCourse.add(currentCrs);
 						addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
 					}
 					else{
 						for(Course cr: currentlySelectedCourse){
-							//if(currentCrs.conflict(cr)){
-							//	count++;
-							//}
+							if(currentCrs.conflict(cr)){
+								count++;
+							}
 						}
 						if(count==0){
 							addCurrentCourse(selectedList, cList.getSelection()[0]);
