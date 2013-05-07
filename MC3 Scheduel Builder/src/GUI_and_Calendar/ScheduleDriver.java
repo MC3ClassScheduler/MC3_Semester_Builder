@@ -484,8 +484,8 @@ public class ScheduleDriver {
 							currentCrs = crs;
 					}
 					if(currentlySelectedCourse.isEmpty()){
-						addCurrentCourse(selectedList, cList.getSelection()[0]);
 						currentlySelectedCourse.add(currentCrs);
+						addCurrentCourse(selectedList, cList.getSelection()[0]);
 						addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
 					}
 					else{
@@ -494,7 +494,9 @@ public class ScheduleDriver {
 								count++;
 							}
 						}
+						System.out.println(count);
 						if(count==0){
+							currentlySelectedCourse.add(currentCrs);
 							addCurrentCourse(selectedList, cList.getSelection()[0]);
 							addToCalendar(cList.getSelection()[0], currentCrs.getTimeRange()[0], table, currentCrs.getDays());
 						}
