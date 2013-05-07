@@ -451,6 +451,7 @@ public class ScheduleDriver {
 			@Override
 			public void mouseUp(MouseEvent e) {
 				try{
+					if(!(selectedList.getSelection()[0].equals("No Courses Selected")) ){
 					Course currentCrs = new Course();
 					for(Course crs: courseList){
 						if(selectedList.getSelection()[0].equals(crs.toString()))
@@ -459,6 +460,7 @@ public class ScheduleDriver {
 					removeCurrentCourse(selectedList, selectedList.getSelection()[0]);
 					currentlySelectedCourse.remove(currentCrs);
 					removeFromCalendar(currentCrs.getTimeRange()[0], table, currentCrs.getDays());
+					}
 				}
 				catch(ArrayIndexOutOfBoundsException error){
 					final ErrorDialog err = new ErrorDialog(shlMcScheduler, 1);
