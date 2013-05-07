@@ -131,31 +131,31 @@ public class Course{
 	
 	public boolean conflict(Course c){
 		if(this.days.contains("M") && c.days.contains("M")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		if(this.days.contains("T") && c.days.contains("T")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		if(this.days.contains("W") && c.days.contains("W")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		if(this.days.contains("R") && c.days.contains("R")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		if(this.days.contains("F") && c.days.contains("F")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		if(this.days.contains("S") && c.days.contains("S")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		if(this.days.contains("N") && c.days.contains("N")){
-			if(this.timeRange[0] > c.timeRange[1] && this.timeRange[1] < c.timeRange[0]) return false;
+			if(this.timeRange[0] < c.timeRange[1] && this.timeRange[1] > c.timeRange[0]) return false;
 			else return true;
 		}
 		else return false;
