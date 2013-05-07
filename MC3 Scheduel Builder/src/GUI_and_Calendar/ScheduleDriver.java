@@ -1,5 +1,7 @@
 package GUI_and_Calendar;
 
+import java.util.ArrayList;
+
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
@@ -20,6 +22,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeColumn;
 
 
 public class ScheduleDriver {
@@ -74,6 +78,78 @@ public class ScheduleDriver {
 		}
 	}
 
+	public void addToCalendar(String courseName, double startTime, Table tab, String days){
+		startTime = Math.round(startTime);
+		String[] input = new String[8];
+		ArrayList<Integer> inDays = new ArrayList<Integer>();
+		String TOD = "AM";
+		
+		//checking start time if before 12
+			if(startTime >= 12.0)
+				TOD = "PM";
+			input[0] = ((Double)startTime).toString().substring(0, 1) + " " + TOD;
+			
+		//checking the days of the course	
+			for(int i = 0; i < days.length(); i++){
+				switch(days.charAt(i)){
+					case 'n': 	inDays.add(1);
+								break;
+					case 'm': 	inDays.add(2);
+								break;
+					case 't': 	inDays.add(3);
+								break;
+					case 'w': 	inDays.add(4);
+								break;
+					case 'r': 	inDays.add(5);
+								break;
+					case 'f': 	inDays.add(6);
+								break;
+					case 's': 	inDays.add(7);
+								break;
+				}
+			}
+		for(int num: inDays){
+			input[num] = courseName;
+		}
+		
+		switch(((int)startTime)){
+			case 8: 	tab.getItem(0).setText(input);
+						break;
+			case 9: 	tab.getItem(1).setText(input);
+						break;
+			case 10:	tab.getItem(2).setText(input);
+						break;
+			case 11:	tab.getItem(3).setText(input);
+						break;
+			case 12:	tab.getItem(4).setText(input);
+						break;
+			case 13:	tab.getItem(5).setText(input);
+						break;
+			case 14:	tab.getItem(6).setText(input);
+						break;
+			case 15:	tab.getItem(7).setText(input);
+						break;
+			case 16:	tab.getItem(8).setText(input);
+						break;
+			case 17:	tab.getItem(9).setText(input);
+						break;
+			case 18:	tab.getItem(10).setText(input);
+						break;
+			case 19:	tab.getItem(11).setText(input);
+						break;
+			case 20:	tab.getItem(12).setText(input);
+						break;
+			case 21:	tab.getItem(13).setText(input);
+						break;
+			case 22:	tab.getItem(14).setText(input);
+						break;
+		}
+	}
+	
+	
+	public void removeFromCalendar(){
+		
+	}
 	/**
 	 * Create contents of the window.
 	 */
@@ -194,7 +270,10 @@ public class ScheduleDriver {
 					cList.addSelectionListener(new SelectionAdapter() {
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							currentCourseSelected = cList.getSelection()[0];
+							
+							if(cList.getSelection().length>=1){
+								currentCourseSelected = cList.getSelection()[0];
+							}
 						}
 					});
 					cList.setBounds(0, 0, 557, 315);
@@ -246,42 +325,45 @@ public class ScheduleDriver {
 						TableColumn SatColumn = new TableColumn(table, SWT.NONE);
 						SatColumn.setWidth(71);
 						SatColumn.setText("Saturday");
+		
+									TableItem eightAM = new TableItem(table, 0);
+									eightAM.setText("8 AM");
 				
-									TableItem nineAM = new TableItem(table, SWT.NONE);
-									nineAM.setText("9AM");
+									TableItem nineAM = new TableItem(table, 0);
+									nineAM.setText("9 AM");
 									
 									TableItem tenAM = new TableItem(table, 0);
-									tenAM.setText("10AM");
+									tenAM.setText("10 AM");
 									
 									TableItem elevenAM = new TableItem(table, 0);
-									elevenAM.setText("11AM");
+									elevenAM.setText("11 AM");
 									
 									TableItem twelvePM = new TableItem(table, 0);
-									twelvePM.setText("12PM");
+									twelvePM.setText("12 PM");
 									
 									TableItem onePM = new TableItem(table, 0);
-									onePM.setText("1PM");
+									onePM.setText("1 PM");
 									
 									TableItem twoPM = new TableItem(table, 0);
-									twoPM.setText("2PM");
+									twoPM.setText("2 PM");
 									
 									TableItem threePM = new TableItem(table, 0);
-									threePM.setText("3PM");
+									threePM.setText("3 PM");
 									
 									TableItem fourPM = new TableItem(table, 0);
-									fourPM.setText("4PM");
+									fourPM.setText("4 PM");
 									
 									TableItem fivePM = new TableItem(table, 0);
-									fivePM.setText("5PM");
+									fivePM.setText("5 PM");
 									
 									TableItem sixPM = new TableItem(table, 0);
-									sixPM.setText("6PM");
+									sixPM.setText("6 PM");
 									
 									TableItem sevenPM = new TableItem(table, 0);
-									sevenPM.setText("7PM");
+									sevenPM.setText("7 PM");
 									
 									TableItem eightPM = new TableItem(table, 0);
-									eightPM.setText("8PM");
+									eightPM.setText("8 PM");
 									
 									TableItem ninePM = new TableItem(table, 0);
 									ninePM.setText("9PM");
@@ -311,6 +393,7 @@ public class ScheduleDriver {
 			public void mouseUp(MouseEvent e) {
 				try{
 					removeCurrentCourse(selectedList, selectedList.getSelection()[0]);
+					//removeFromCalendar
 				}
 				catch(ArrayIndexOutOfBoundsException error){
 					final ErrorDialog err = new ErrorDialog(shlMcScheduler, 1);
@@ -328,6 +411,7 @@ public class ScheduleDriver {
 			public void mouseUp(MouseEvent e) {
 				try{
 					addCurrentCourse(selectedList, cList.getSelection()[0]);
+					addToCalendar(cList.getSelection()[0], 8.5, table, "mwf");
 				}
 				catch(ArrayIndexOutOfBoundsException error){
 					final ErrorDialog err = new ErrorDialog(shlMcScheduler, 1);
