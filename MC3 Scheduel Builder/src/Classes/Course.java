@@ -28,6 +28,38 @@ public class Course{
 	private Hashtable<Day, Double[]> courseTime = new Hashtable<Day, Double[]>();
 
 
+	public int getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
+
+	public String getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(String building) {
+		this.building = building;
+	}
+
+	public String getDays() {
+		return days;
+	}
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+
 	public Course(int courseNum, int creditHours, String courseName) {
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
@@ -80,6 +112,10 @@ public class Course{
 	public void setTimeRange(Double[] timeRange) {
 		this.timeRange = timeRange;
 	}
+	public void setTimeRange(double nextDouble, double nextDouble2) {
+		timeRange[0] = nextDouble;
+		timeRange[1] = nextDouble2;	
+	}
 	public Hashtable<Day, Double[]> getCourseTime() {
 		return courseTime;
 	}
@@ -87,7 +123,7 @@ public class Course{
 		this.courseTime = courseTime;
 	}
 
-
+/*
 	public Course[] getCoursesFromFile() throws FileNotFoundException{
 		Scanner in = new Scanner(new FileReader("Course List.txt"));
 		ArrayList<String> courseLines = new ArrayList<String>();
@@ -113,10 +149,12 @@ public class Course{
 		return Courses;
 		
 	}
-
+*/
 	@Override
 	public String toString() {
 		return courseCode + "*" + courseNum + "*" + section + " " + courseName + " " + building +
 				" " + roomNum + " " + days + " " + timeRange.toString();
 	}
+
+
 }

@@ -1,7 +1,9 @@
 package GUI_and_Calendar;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -413,5 +415,29 @@ public class ScheduleDriver {
 		});
 		btnAddCourse.setText("Add Course");
 
+	}
+	public Course[] getCoursesFromFile() throws FileNotFoundException{
+		Scanner in = new Scanner(new FileReader("Course List.txt"));
+		ArrayList<String> courseLines = new ArrayList<String>();
+		int count = 0;
+		Course[] Courses = new Course[6];
+		while(in.hasNextLine()){courseLines.add(in.nextLine());}
+		
+		for(String i: courseLines){
+			in = new Scanner(i);
+			in.useDelimiter(",");
+			
+			Courses[count].setCourseCode(in.next());
+			Courses[count].setCourseNum(in.nextInt());
+			Courses[count].setSection(in.next());
+			Courses[count].setCourseName(in.next());
+			Courses[count].setBuilding(in.next());
+			Courses[count].setRoomNum(in.nextInt());
+			Courses[count].setDays(in.next());
+			Courses[count].setTimeRange(in.nextDouble(),in.nextDouble());
+			count++;
+		}
+		return Courses;
+		
 	}
 }
