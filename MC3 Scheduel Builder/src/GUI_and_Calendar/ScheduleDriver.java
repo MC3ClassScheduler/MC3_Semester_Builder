@@ -494,7 +494,6 @@ public class ScheduleDriver {
 								count++;
 							}
 						}
-						System.out.println(count);
 						if(count==0){
 							currentlySelectedCourse.add(currentCrs);
 							addCurrentCourse(selectedList, cList.getSelection()[0]);
