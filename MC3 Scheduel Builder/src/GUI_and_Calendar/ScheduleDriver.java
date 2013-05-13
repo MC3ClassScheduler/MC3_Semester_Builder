@@ -468,7 +468,7 @@ public class ScheduleDriver {
 				}
 			}
 		});
-		btnRemoveCourse.setBounds(111, 275, 95, 25);
+		btnRemoveCourse.setBounds(91, 275, 115, 25);
 		btnRemoveCourse.setText("Remove Course");
 		
 		Button btnAddCourse = new Button(SelectedCoursesWindow, SWT.NONE);
