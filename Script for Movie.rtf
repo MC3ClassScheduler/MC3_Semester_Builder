@@ -1,0 +1,49 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs24 \cf0 Script:\
+\
+first scene:\
+"Hello World! This is the MC3 schedule builder!" //generic picture.\
+\
+Talk about the goal/what it does\
+\
+"The online web advisor for MC3 is atrocious and in no way shape or form intuitive. We wanted to make the process of\
+registering courses easier and straight foward for students."//webadvisor\
+\
+"The schedulers main function is to store selected courses and actively check for conflicts of time while scheduling."\
+"it then displays the selected courses in a weekly calendar in real time. Courses can be removed just as easily."\
+\'a0//show add course, calendar, remove course w/ calendar open\
+\
+\
+Scene Two:\
+\
+"Here is the code driving the GUI for the application." //start showing code-ScheduleDriver.java\
+"there are many different types of control objects in use to make this application function as it does."\
+"there are also additional classes for different dialog boxes to display errors or input data."//show dialog classes\
+"One of the problems we ran into was getting the driver and the dialog classes to communicate with each other.\
+To solve this we constructed the dialog objects with specific parameters that we wished to modify within the driver class.\
+That keeps the 2 classes connected where they need to be."\
+\
+"To take in data we orignally planned for the user to copy and paste their transcript. then using a custom scanner class\
+we would scan through and parse the transcript and pull the information needed. We were able to pull some information out\
+but unfortunately had to shift focus away from completing the scanner\'a0\
+because it was consuming too much time and would reduce the amount of features we could add."//show scanner code\
+\
+"To store course information we decided to make a course object so that it could all be linked together in an organized fashion."//start showing Course.java\
+"The Course object held important data of the courses such as the names, sections, days, times, and credits. Using an arraylist\
+we could populate a list of courses for the semester and refer to it whenever we needed to."//show getCourseList method in ScheduleDriver.java\
+\
+\
+\
+Scene Three:\
+\
+"If we had more time we could incorporate so much more."\
+"We could of added printing and email functionality so that a person has an easy to read schedule that they can then take to an advisor\
+for additional help scheduling courses."\
+"We also could add a way to view ratings from RateMyProfessor into the scheduler."\
+"And additionally some small tweaks that would help the user, such as searching for classes in a specific time slot selected in the calendar."}
