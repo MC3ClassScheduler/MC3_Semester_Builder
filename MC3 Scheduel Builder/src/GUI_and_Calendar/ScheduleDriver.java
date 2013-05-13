@@ -440,10 +440,10 @@ public class ScheduleDriver {
 		LabelSelectedCourses.setText("Selected Courses");
 		
 		Composite SelectedCoursesWindow = new Composite(shlMcScheduler, SWT.NONE);
-		SelectedCoursesWindow.setBounds(571, 23, 206, 310);
+		SelectedCoursesWindow.setBounds(571, 23, 222, 310);
 		
 		final List selectedList = new List(SelectedCoursesWindow, SWT.BORDER | SWT.H_SCROLL);
-		selectedList.setBounds(0, 0, 206, 269);
+		selectedList.setBounds(0, 0, 220, 269);
 		selectedList.add("No Courses Selected");
 		
 		Button btnRemoveCourse = new Button(SelectedCoursesWindow, SWT.NONE);
@@ -468,7 +468,7 @@ public class ScheduleDriver {
 				}
 			}
 		});
-		btnRemoveCourse.setBounds(91, 275, 115, 25);
+		btnRemoveCourse.setBounds(91, 275, 129, 25);
 		btnRemoveCourse.setText("Remove Course");
 		
 		Button btnAddCourse = new Button(SelectedCoursesWindow, SWT.NONE);
