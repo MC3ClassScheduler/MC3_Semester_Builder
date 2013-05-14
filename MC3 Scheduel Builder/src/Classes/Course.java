@@ -23,9 +23,7 @@ public class Course{
 	private String section;
 	private String building;
 	private String days;
-	private enum Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
 	private Double[] timeRange = new Double[2];
-	private Hashtable<Day, Double[]> courseTime = new Hashtable<Day, Double[]>();
 
 
 	public int getRoomNum() {
@@ -75,11 +73,10 @@ public class Course{
 		this.creditHours = creditHours;
 	}
 	
-	public Course(String courseName, String section, int courseNum, int creditHours, Day courseDay, Double[] timeRange){
+	public Course(String courseName, String section, int courseNum, int creditHours, Double[] timeRange){
 		this.courseName = courseName;
 		this.courseNum = courseNum;
 		this.creditHours = creditHours;
-		courseTime.put(courseDay, timeRange);
 	}
 
     public int getCourseNum(){
@@ -115,12 +112,6 @@ public class Course{
 	public void setTimeRange(double nextDouble, double nextDouble2) {
 		timeRange[0] = nextDouble;
 		timeRange[1] = nextDouble2;	
-	}
-	public Hashtable<Day, Double[]> getCourseTime() {
-		return courseTime;
-	}
-	public void setCourseTime(Hashtable<Day, Double[]> courseTime) {
-		this.courseTime = courseTime;
 	}
 
 	@Override
